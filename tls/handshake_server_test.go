@@ -24,7 +24,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cetcxinlian/cryptogm/x509"
+	"github.com/slisify/cryptogm/x509"
 )
 
 // zeroSource is an io.Reader that returns an unlimited number of zero bytes.

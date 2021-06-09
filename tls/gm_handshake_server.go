@@ -11,9 +11,10 @@ import (
 	"crypto/subtle"
 	"errors"
 	"fmt"
-	"github.com/cetcxinlian/cryptogm/x509"
 	"io"
 	"sync/atomic"
+
+	"github.com/slisify/cryptogm/x509"
 )
 
 // serverHandshakeStateGM contains details of a server handshake in progress.
@@ -141,25 +142,25 @@ func (hs *serverHandshakeStateGM) readClientHello() (isResume bool, err error) {
 	hs.hello = new(serverHelloMsg)
 
 	//supportedCurve := false
-//	preferredCurves := c.config.curvePreferences()
-//Curves:
-//	for _, curve := range hs.clientHello.supportedCurves {
-//		for _, supported := range preferredCurves {
-//			if supported == curve {
-//				supportedCurve = true
-//				break Curves
-//			}
-//		}
-//	}
-//
-//	supportedPointFormat := false
-//	for _, pointFormat := range hs.clientHello.supportedPoints {
-//		if pointFormat == pointFormatUncompressed {
-//			supportedPointFormat = true
-//			break
-//		}
-//	}
-//	hs.ellipticOk = supportedCurve && supportedPointFormat
+	//	preferredCurves := c.config.curvePreferences()
+	//Curves:
+	//	for _, curve := range hs.clientHello.supportedCurves {
+	//		for _, supported := range preferredCurves {
+	//			if supported == curve {
+	//				supportedCurve = true
+	//				break Curves
+	//			}
+	//		}
+	//	}
+	//
+	//	supportedPointFormat := false
+	//	for _, pointFormat := range hs.clientHello.supportedPoints {
+	//		if pointFormat == pointFormatUncompressed {
+	//			supportedPointFormat = true
+	//			break
+	//		}
+	//	}
+	//	hs.ellipticOk = supportedCurve && supportedPointFormat
 
 	foundCompression := false
 	// We only support null compression, so check that the client offered it.

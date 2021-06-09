@@ -9,14 +9,15 @@ import (
 	"bytes"
 	"crypto/rand"
 	"encoding/gob"
-	"github.com/cetcxinlian/cryptogm/sm3"
 	"reflect"
 	"testing"
+
+	"github.com/slisify/cryptogm/sm3"
 )
 
-type Assert struct {}
+type Assert struct{}
 
-func (a *Assert)Equal(t *testing.T, expect, actual interface{}) {
+func (a *Assert) Equal(t *testing.T, expect, actual interface{}) {
 	if reflect.TypeOf(expect) != reflect.TypeOf(actual) {
 		t.Error("assert failed not equal", expect, actual)
 		return
@@ -27,19 +28,20 @@ func (a *Assert)Equal(t *testing.T, expect, actual interface{}) {
 	var buf2 bytes.Buffer
 	enc2 := gob.NewEncoder(&buf2)
 	enc2.Encode(expect)
-	if bytes.Equal(buf1.Bytes(),buf2.Bytes()) {
+	if bytes.Equal(buf1.Bytes(), buf2.Bytes()) {
 		t.Log("true")
 	} else {
 		t.Error("assert failed not equal", expect, actual)
 	}
 }
-func (a *Assert)True(t *testing.T, value bool) {
+func (a *Assert) True(t *testing.T, value bool) {
 	if value == true {
 		t.Log("true")
 	} else {
 		t.Error("assert failed %i is false", value)
 	}
 }
+
 var assert Assert
 
 func TestSignVerify(t *testing.T) {
@@ -79,7 +81,7 @@ func TestKeyGeneration(t *testing.T) {
 func BenchmarkSign(b *testing.B) {
 	b.ResetTimer()
 	origin := []byte("testing")
-	hashed  := sm3.SumSM3(origin)
+	hashed := sm3.SumSM3(origin)
 	priv, _ := GenerateKey(rand.Reader)
 	b.ReportAllocs()
 	b.ResetTimer()

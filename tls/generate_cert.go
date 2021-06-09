@@ -18,7 +18,7 @@ import (
 	"encoding/pem"
 	"flag"
 	"fmt"
-	"github.com/cetcxinlian/cryptogm/x509"
+	"github.com/slisify/cryptogm/x509"
 	"log"
 	"math/big"
 	"net"
