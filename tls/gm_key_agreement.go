@@ -16,7 +16,7 @@ import (
 	"github.com/slisify/cryptogm/sm2"
 	"github.com/slisify/cryptogm/x509"
 
-	"golang_org/x/crypto/curve25519"
+	"golang.org/x/crypto/curve25519"
 )
 
 //// hashForServerKeyExchange hashes the given slices and returns their digest
